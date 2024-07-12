@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CORS_ALLOW_ALL_ORIGINS = True
-
+CSRF_TRUSTED_ORIGINS = ['https://hotel-booking-backend-vvsl.onrender.com','https://*.127.0.0.1']
 
 # Application definition
 
