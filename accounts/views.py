@@ -39,10 +39,10 @@ def activate(request, uid64, token):
     if user is not None and default_token_generator.check_token(user,token) and user.is_active==False:
         user.is_active = True
         user.save()
-        return HttpResponseRedirect('https://hotel-booking-backend-vvsl.onrender.com/account/login?status=success')
+        return HttpResponseRedirect('https://bdhotelbook.netlify.app/account/login?status=success')
     elif user is not None and default_token_generator.check_token(user,token) and user.is_active==True:
-        return HttpResponseRedirect('https://hotel-booking-backend-vvsl.onrender.com/account/login?status=already_verified')
-    return HttpResponseRedirect('https://hotel-booking-backend-vvsl.onrender.com/account/login?status=failure')
+        return HttpResponseRedirect('https://bdhotelbook.netlify.app/account/login?status=already_verified')
+    return HttpResponseRedirect('https://bdhotelbook.netlify.app/account/login?status=failure')
 
 #user login
 class LoginView(APIView):
