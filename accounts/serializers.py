@@ -75,7 +75,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         #email verification setup
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        confirm_link = f"http://127.0.0.1:8000/account/active/{uid}/{token}"
+        confirm_link = f"https://hotel-booking-backend-vvsl.onrender.com/account/active/{uid}/{token}"
         mail_subject = "Please verify your email"
         mail_body = render_to_string('mail_confirm.html', {'confirm_link':confirm_link})
         send_mail = EmailMultiAlternatives(mail_subject,'',to=[user.email])
