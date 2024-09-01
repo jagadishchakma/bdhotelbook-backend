@@ -12,6 +12,7 @@ from django.shortcuts import redirect
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework.permissions import IsAuthenticated
+from hotel_booking.utils import backend_link, frontend_link
 
 #user list
 class UserListView(viewsets.ModelViewSet):
@@ -39,10 +40,10 @@ def activate(request, uid64, token):
     if user is not None and default_token_generator.check_token(user,token) and user.is_active==False:
         user.is_active = True
         user.save()
-        return HttpResponseRedirect('https://bdhotelbook.netlify.app/account/login?status=success')
+        return HttpResponseRedirect(f'{frontend_link}/account/login?status=success')
     elif user is not None and default_token_generator.check_token(user,token) and user.is_active==True:
-        return HttpResponseRedirect('https://bdhotelbook.netlify.app/account/login?status=already_verified')
-    return HttpResponseRedirect('https://bdhotelbook.netlify.app/account/login?status=failure')
+        return HttpResponseRedirect(f'{frontend_link}/account/login?status=already_verified')
+    return HttpResponseRedirect(f'{frontend_link}/account/login?status=failure')
 
 #user login
 class LoginView(APIView):

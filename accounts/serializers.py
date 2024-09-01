@@ -10,6 +10,7 @@ from django.core.mail import EmailMultiAlternatives
 from hotels.serializers import RoomSerializer,HotelReviewSerializer
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.exceptions import ValidationError
+from hotel_booking.utils import backend_link
 
 
 # user serializer
@@ -75,7 +76,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         #email verification setup
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        confirm_link = f"https://hotel-booking-backend-vvsl.onrender.com/account/active/{uid}/{token}"
+        confirm_link = f"{backend_link}/account/active/{uid}/{token}"
         mail_subject = "Please verify your email"
         mail_body = render_to_string('mail_confirm.html', {'confirm_link':confirm_link})
         send_mail = EmailMultiAlternatives(mail_subject,'',to=[user.email])
