@@ -1,2 +1,5 @@
 hotel_booking/.env
 /bdhotel.zip
+db.sqlite3
+__pycache__/
+

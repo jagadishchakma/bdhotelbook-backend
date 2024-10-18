@@ -1,2 +1,2 @@
-backend_link = 'https://hotel-booking-backend-vvsl.onrender.com'
-frontend_link = 'https://bdhotelbook.netlify.app'
+backend_link = 'https://bdhotelapi.tfbfoundation.org'
+frontend_link = 'https://bdhotelbook.vercel.app'
